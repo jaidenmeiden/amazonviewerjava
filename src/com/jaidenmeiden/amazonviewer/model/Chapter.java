@@ -16,8 +16,10 @@ public class Chapter {
 
     private int sessionNumber;
 
-    public Chapter() {
-
+    public Chapter(String title, int dutation, short year) {
+        this.title = title;
+        this.dutation = dutation;
+        this.year = year;
     }
 
     public int getId() {

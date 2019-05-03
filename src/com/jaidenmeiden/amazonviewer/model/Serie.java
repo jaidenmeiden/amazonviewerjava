@@ -20,8 +20,10 @@ public class Serie {
 
     private Chapter charpters;
 
-    public Serie() {
-
+    public Serie(String title, String genre, int dutation) {
+        this.title = title;
+        this.genre = genre;
+        this.dutation = dutation;
     }
 
     public int getId() {

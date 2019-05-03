@@ -20,8 +20,11 @@ public class Book {
 
     private boolean readed;
 
-    public Book() {
-
+    public Book(String title, Date editionDate, String editorial, String isbn) {
+        this.title = title;
+        this.editionDate = editionDate;
+        this.editorial = editorial;
+        this.isbn = isbn;
     }
 
     public int getId() {

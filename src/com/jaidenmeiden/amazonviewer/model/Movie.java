@@ -32,6 +32,13 @@ public class Movie {
         this.year = year;
     }
 
+    public void showData() {
+        System.out.println("Title: " + this.title);
+        System.out.println("Genre: " + this.genre);
+        System.out.println("Year: " + this.year);
+        System.out.println();
+    }
+
     public int getId() {
         return id;
     }
