@@ -1,5 +1,6 @@
 package com.jaidenmeiden.amazonviewer.model;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Publication {
@@ -45,5 +46,13 @@ public class Publication {
 
     public void setCreators(String[] creators) {
         this.creators = creators;
+    }
+
+    @Override
+    public String toString() {
+        return "Title='" + title + '\'' +
+                "\nEditionDate=" + editionDate +
+                "\nEditorial='" + editorial + '\'' +
+                "\nCreators=" + Arrays.toString(creators);
     }
 }
