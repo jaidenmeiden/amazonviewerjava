@@ -5,9 +5,10 @@ import com.jaidenmeiden.amazonviewer.model.Movie;
 import java.util.Date;
 
 public class Main {
+
     public static void main(String[] args) {
-        Movie movie = new Movie("Coco", "Animation", (short)2019);
-        movie.showData();
+        Movie movie = new Movie("Coco", "Animation", "", 120, (short)2019);
+        System.out.println(movie.toString());
         showMenu();
     }
 

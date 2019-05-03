@@ -2,69 +2,19 @@ package com.jaidenmeiden.amazonviewer.model;
 
 import java.util.Date;
 
-public class Book {
+public class Book extends Publication {
 
     private int id;
-
-    private String title;
-
-    private Date editionDate;
-
-    private String editorial;
-
-    private String[] creators;
-
     private short year;
-
     private String isbn;
-
     private boolean readed;
 
-    public Book(String title, Date editionDate, String editorial, String isbn) {
-        this.title = title;
-        this.editionDate = editionDate;
-        this.editorial = editorial;
-        this.isbn = isbn;
+    public Book(String title, Date editionDate, String editorial) {
+        super(title, editionDate, editorial);
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getEditionDate() {
-        return editionDate;
-    }
-
-    public void setEditionDate(Date editionDate) {
-        this.editionDate = editionDate;
-    }
-
-    public String getEditorial() {
-        return editorial;
-    }
-
-    public void setEditorial(String editorial) {
-        this.editorial = editorial;
-    }
-
-    public String[] getCreators() {
-        return creators;
-    }
-
-    public void setCreators(String[] creators) {
-        this.creators = creators;
     }
 
     public short getYear() {
