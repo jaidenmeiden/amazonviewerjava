@@ -1,5 +1,7 @@
 package com.jaidenmeiden.amazonviewer.model;
 
+import java.util.Date;
+
 public class Chapter extends Movie {
 
     private int id;
@@ -22,4 +24,5 @@ public class Chapter extends Movie {
     public void setSessionNumber(int sessionNumber) {
         this.sessionNumber = sessionNumber;
     }
+
 }
