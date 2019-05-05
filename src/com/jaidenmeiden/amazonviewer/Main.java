@@ -244,7 +244,6 @@ public class Main {
 		
 		report.setNameFile("reporte" + dateString);
 		report.setExtension("txt");
-		report.setTitle(":: VISTOS ::");
 		report.setTitle(":: VISTOS :: \n\n");
 		report.setContent(print(report));
 		report.makeReport();
