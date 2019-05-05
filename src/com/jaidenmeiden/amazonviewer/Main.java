@@ -1,12 +1,18 @@
 package com.jaidenmeiden.amazonviewer;
 
 import com.jaidenmeiden.amazonviewer.model.*;
+import com.jaidenmeiden.makereport.Report;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
+	
+	private static ArrayList<Movie> movies;
+	private static ArrayList<Serie> series;
+	private static ArrayList<Book> books;
 
     public static void main(String[] args) {
         showMenu();
@@ -63,7 +69,7 @@ public class Main {
 
     public static void showMovies() {
         int exit = 1;
-        ArrayList<Movie> movies = Movie.makeMoviesList();
+        movies = Movie.makeMoviesList();
         do {
             System.out.println();
             System.out.println(":: MOVIES ::");
@@ -104,7 +110,7 @@ public class Main {
 
     public static void showSeries() {
         int exit = 1;
-        ArrayList<Serie> series = Serie.makeSeriesList();
+        series = Serie.makeSeriesList();
         do {
             System.out.println();
             System.out.println(":: SERIES ::");
@@ -174,7 +180,7 @@ public class Main {
 
     public static void showBooks() {
         int exit = 1;
-        ArrayList<Book> books = Book.makeBooksList();
+        books = Book.makeBooksList();
         do {
             System.out.println();
             System.out.println(":: BOOKS ::");
@@ -222,20 +228,70 @@ public class Main {
     }
 
     public static void makeReport() {
-        int exit = 1;
-        do {
-            System.out.println();
-            System.out.println(":: REPORTS ::");
-            System.out.println();
-        } while (exit != 0);
+    	
+    	Report report = new Report();
+		report.setNameFile("reporte");
+		report.setExtension("txt");
+		report.setTitle(":: VISTOS :: \n\n");
+		report.setContent(print(report));
+		report.makeReport();
     }
 
     public static void makeReport(Date date) {
-        int exit = 1;
-        do {
-            System.out.println();
-            System.out.println(":: REPORT TODAY ::");
-            System.out.println();
-        } while (exit != 0);
+    	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String dateString = df.format(date);
+		Report report = new Report();
+		
+		report.setNameFile("reporte" + dateString);
+		report.setExtension("txt");
+		report.setTitle(":: VISTOS ::");
+		report.setTitle(":: VISTOS :: \n\n");
+		report.setContent(print(report));
+		report.makeReport();
+    }
+    
+    public static String print(Report report){
+    	String contentReport = report.getTitle();
+		
+		if(movies != null) {
+			for (Movie movie : movies) {
+				if (movie.getIsViewed()) {
+					contentReport += ":: MOVIE :: \n";
+					contentReport += movie.toString() + "\n";
+					
+				}
+			}
+			contentReport += "\n";
+			contentReport += "\n";
+		}
+		
+		if(series != null) {
+			for (Serie serie : series) {
+				if (serie.getIsViewed()) {
+					contentReport += ":: SERIE :: \n";
+					contentReport += serie.toString() + "\n";
+					contentReport += "\n";
+					for (Chapter chapter : serie.getCharpters()) {
+						if (chapter.getIsViewed()) {
+							contentReport += ":: CHAPTER :: \n";
+							contentReport += chapter.toString() + "\n";
+						}
+					}
+					contentReport += "\n";
+				}
+			}
+			contentReport += "\n";
+		}
+		
+		if(books != null) {
+			for (Book book : books) {
+				if (book.getIsReaded()) {
+					contentReport += ":: BOOK :: \n";
+					contentReport += book.toString() + "\n";
+					
+				}
+			}
+		}
+    	return contentReport;
     }
 }
