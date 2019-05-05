@@ -8,9 +8,10 @@ public class Serie extends Film {
     private int seasonQuantity;
     private ArrayList<Chapter> charpters;
 
-    public Serie(String title, String genre, String creator, int duration, int seasonQuantity) {
+    public Serie(String title, String genre, String creator, int duration, int seasonQuantity, ArrayList<Chapter> charpters) {
         super(title, genre, creator, duration);
         this.seasonQuantity = seasonQuantity;
+        this.charpters = charpters;
     }
 
     public int getId() {
@@ -36,8 +37,8 @@ public class Serie extends Film {
     public static ArrayList<Serie> makeSeriesList() {
         ArrayList<Serie> series = new ArrayList<>();
 
-        for(int i = 1; i < 10; i++) {
-            series.add(new Serie("Serie " + i, "Genre " + i, "Creator " + i, 120 + i, (short)(1990 + 1)));
+        for(int i = 1; i <= 7; i++) {
+            series.add(new Serie("Serie " + i, "Genre " + i, "Creator " + i, 120 + i, (short)(1990 + 1), Chapter.makeChaptersList()));
         }
 
         return series;

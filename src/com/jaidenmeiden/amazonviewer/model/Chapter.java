@@ -1,5 +1,6 @@
 package com.jaidenmeiden.amazonviewer.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Chapter extends Movie {
@@ -23,6 +24,16 @@ public class Chapter extends Movie {
 
     public void setSessionNumber(int sessionNumber) {
         this.sessionNumber = sessionNumber;
+    }
+    
+    public static ArrayList<Chapter> makeChaptersList() {
+        ArrayList<Chapter> chapters = new ArrayList<>();
+
+        for(int i = 1; i <= 10; i++) {
+        	chapters.add(new Chapter("Chapter " + i, "Genre " + i, "Creator " + i, 120 + i, (short)(2000 + i), i));
+        }
+
+        return chapters;
     }
 
 }

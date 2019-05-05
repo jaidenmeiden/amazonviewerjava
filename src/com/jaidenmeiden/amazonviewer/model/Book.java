@@ -63,7 +63,7 @@ public class Book extends Publication implements IVisualizable {
     public static ArrayList<Book> makeBooksList() {
         ArrayList<Book> books = new ArrayList<>();
 
-        for(int i = 1; i < 10; i++) {
+        for(int i = 1; i <= 10; i++) {
             books.add(new Book("Book " + i, new Date(), "Editorial " + i));
         }
 

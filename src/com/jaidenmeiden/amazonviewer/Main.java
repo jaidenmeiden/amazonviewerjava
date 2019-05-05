@@ -126,25 +126,49 @@ public class Main {
             	Serie serieSelected = series.get(response - 1);
             	serieSelected.setViewed(true);	
 	            
-	            for(int i = 1; i < 10000; i++) {
-	                System.out.println(".......");
-	            }
-	            
-	            //Termine de verla
-	            System.out.println();
-	            System.out.println("Viste: " + serieSelected);
+	            showChapters(series.get(response - 1).getCharpters());
             } else {
             	exit = 0;
             }
         } while (exit != 0);
     }
 
-    public static void showChapters() {
+    public static void showChapters(ArrayList<Chapter> chapters) {
         int exit = 1;
         do {
             System.out.println();
             System.out.println(":: CHAPTERS ::");
             System.out.println();
+            
+            for(int i = 0; i < chapters.size(); i++) {
+                System.out.println((i+1) + ". Chapter: " + chapters.get(i).getTitle() + " Visto: " + chapters.get(i).isViewed());
+            }
+            
+            System.out.println();
+            System.out.println("Selecciona un capitulo digitando el codigo o");
+            System.out.println("digita 0 para regreesar al menú de series!");
+            System.out.println();
+            
+            Scanner sc = new Scanner(System.in);
+            int response = Integer.valueOf(sc.nextLine());
+            
+            if(response > 0) {
+            	Chapter chapterSelected = chapters.get(response - 1);
+            	chapterSelected.setViewed(true);
+	            Date dateI = chapterSelected.startToSee(new Date());	
+	            
+	            for(int i = 1; i < 10000; i++) {
+	                System.out.println(".......");
+	            }
+	            
+	            //Termine de verla
+	            chapterSelected.stopToSee(dateI, new Date());
+	            System.out.println();
+	            System.out.println("Visto: " + chapterSelected);
+	            System.out.println("Por: " + chapterSelected.getTimeViewed() + " milliseconds");
+            } else {
+            	exit = 0;
+            }
         } while (exit != 0);
     }
 

@@ -53,7 +53,7 @@ public class Movie extends Film implements IVisualizable{
     public static ArrayList<Movie> makeMoviesList() {
         ArrayList<Movie> movies = new ArrayList<>();
 
-        for(int i = 1; i < 10; i++) {
+        for(int i = 1; i <= 10; i++) {
             movies.add(new Movie("Movie " + i, "Genre " + i, "Creator " + i, 120 + i, (short)(1990 + i)));
         }
 
