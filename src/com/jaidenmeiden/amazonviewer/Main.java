@@ -185,7 +185,7 @@ public class Main {
             }
             
             System.out.println();
-            System.out.println("Selecciona una serie digitando el codigo o");
+            System.out.println("Selecciona un libro digitando el codigo o");
             System.out.println("digita 0 para regreesar al menú!");
             System.out.println();
             
@@ -202,12 +202,30 @@ public class Main {
     }
 
     public static void showMagazines() {
-        int exit = 1;
+        ArrayList<Magazine> magazines = Magazine.makeMagazineList();
+        int exit = 0;
         do {
             System.out.println();
             System.out.println(":: MAGAZINES ::");
             System.out.println();
-        } while (exit != 0);
+
+            for (int i = 0; i < magazines.size(); i++) { //1. Book 1
+                System.out.println(i+1 + ". " + magazines.get(i).getTitle());
+            }
+
+            System.out.println("0. Regresar al Menu");
+            System.out.println();
+
+            //Leer Respuesta usuario
+            int response = AmazonUtil.validateUserResponseMenu(0, 0);
+
+            if(response == 0) {
+                exit = 0;
+                showMenu();
+            }
+
+
+        }while(exit !=0);
     }
 
     public static void makeReport() {
