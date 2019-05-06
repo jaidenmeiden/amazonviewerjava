@@ -3,6 +3,10 @@ package com.jaidenmeiden.amazonviewer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Hereda de {@link Movie}
+ * @see Film
+ * */
 public class Chapter extends Movie {
 
     private int id;
