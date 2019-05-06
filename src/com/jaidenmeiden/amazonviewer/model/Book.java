@@ -1,9 +1,9 @@
 package com.jaidenmeiden.amazonviewer.model;
 
+import com.jaidenmeiden.amazonviewer.Util.AmazonUtil;
+
 import java.util.ArrayList;
 import java.util.Date;
-
-import com.jaidenmeiden.amazonviewer.Util.AmazonUtil;
 
 public class Book extends Publication implements IVisualizable {
 

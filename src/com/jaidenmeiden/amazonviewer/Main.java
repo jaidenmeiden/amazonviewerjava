@@ -2,6 +2,7 @@ package com.jaidenmeiden.amazonviewer;
 
 import com.jaidenmeiden.amazonviewer.model.*;
 import com.jaidenmeiden.makereport.Report;
+import com.jaidenmeiden.amazonviewer.Util.AmazonUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -102,9 +103,9 @@ public class Main {
             System.out.println("Selecciona una pelicula digitando el codigo o");
             System.out.println("digita 0 para regreesar al menú!");
             System.out.println();
-            
-            Scanner sc = new Scanner(System.in);
-            int response = Integer.valueOf(sc.nextLine());
+
+            //Leer Respuesta usuario
+            int response = AmazonUtil.validateUserResponseMenu(0, series.size());
             
             if(response > 0) {
 	            Movie movieSelected = movies.get(response - 1);
@@ -132,10 +133,10 @@ public class Main {
             System.out.println("Selecciona una serie digitando el codigo o");
             System.out.println("digita 0 para regreesar al menú!");
             System.out.println();
-            
-            Scanner sc = new Scanner(System.in);
-            int response = Integer.valueOf(sc.nextLine());
-            	
+
+            //Leer Respuesta usuario
+            int response = AmazonUtil.validateUserResponseMenu(0, series.size());
+
             if(response > 0) {
             	showChapters(series.get(response - 1).getChapters());
             } else {
@@ -144,27 +145,27 @@ public class Main {
         } while (exit != 0);
     }
 
-    public static void showChapters(ArrayList<Chapter> chapters) {
+    public static void showChapters(ArrayList<Chapter> chaptersOfSerieSelected) {
         int exit = 1;
         do {
             System.out.println();
             System.out.println(":: CHAPTERS ::");
             System.out.println();
             
-            for(int i = 0; i < chapters.size(); i++) {
-                System.out.println((i+1) + ". Chapter: " + chapters.get(i).getTitle() + " Visto: " + chapters.get(i).isViewed());
+            for(int i = 0; i < chaptersOfSerieSelected.size(); i++) {
+                System.out.println((i+1) + ". Chapter: " + chaptersOfSerieSelected.get(i).getTitle() + " Visto: " + chaptersOfSerieSelected.get(i).isViewed());
             }
             
             System.out.println();
             System.out.println("Selecciona un capitulo digitando el codigo o");
             System.out.println("digita 0 para regreesar al menú de series!");
             System.out.println();
-            
-            Scanner sc = new Scanner(System.in);
-            int response = Integer.valueOf(sc.nextLine());
-            
+
+            //Leer Respuesta usuario
+            int response = AmazonUtil.validateUserResponseMenu(0, chaptersOfSerieSelected.size());
+
             if(response > 0) {
-            	Chapter chapterSelected = chapters.get(response - 1);
+            	Chapter chapterSelected = chaptersOfSerieSelected.get(response - 1);
             	chapterSelected.view();
             } else {
             	exit = 0;
@@ -188,10 +189,10 @@ public class Main {
             System.out.println("Selecciona un libro digitando el codigo o");
             System.out.println("digita 0 para regreesar al menú!");
             System.out.println();
-            
-            Scanner sc = new Scanner(System.in);
-            int response = Integer.valueOf(sc.nextLine());
-            
+
+            //Leer Respuesta usuario
+            int response = AmazonUtil.validateUserResponseMenu(0, books.size());
+
             if(response > 0) {
             	Book bookSelected = books.get(response - 1);
             	bookSelected.read();
