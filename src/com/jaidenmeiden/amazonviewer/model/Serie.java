@@ -47,6 +47,9 @@ public class Serie extends Film {
         return series;
     }
     
+    /**
+	 * {@inheritDoc}
+	 * */
     @Override
     public String toString() {
         return "Title: " + super.getTitle() +
@@ -56,6 +59,9 @@ public class Serie extends Film {
         "\nDuration: " + super.getDuration();
     }
 
+    /**
+	 * {@inheritDoc}
+	 * */
 	@Override
 	public void view() {
 		setViewed(true);

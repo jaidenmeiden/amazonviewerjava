@@ -50,11 +50,17 @@ public class Book extends Publication implements IVisualizable {
         this.timeReaded = timeReaded;
     }
 
+    /**
+	 * {@inheritDoc}
+	 * */
     @Override
     public Date startToSee(Date dateI) {
         return dateI;
     }
 
+    /**
+	 * {@inheritDoc}
+	 * */
     @Override
     public void stopToSee(Date dateI, Date dateF) {
         if(dateF.getTime() > dateI.getTime()) {

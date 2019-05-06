@@ -5,6 +5,10 @@ import java.util.Date;
 
 import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 
+/**
+ * Hereda de {@link Film}
+ * Implementa de {@link IVisualizable}
+ * */
 public class Movie extends Film implements IVisualizable{
 
     private int id;
@@ -27,29 +31,6 @@ public class Movie extends Film implements IVisualizable{
         this.timeViewed = timeViewed;
     }
 
-    @Override
-    public String toString() {
-        return "Title: " + super.getTitle() +
-        "\nGenre: " + super.getGenre() +
-        "\nYear: " + super.getYear() +
-        "\nCreator: " + super.getCreator() +
-        "\nDuration: " + super.getDuration();
-    }
-
-    @Override
-    public Date startToSee(Date dateI) {
-        return dateI;
-    }
-
-    @Override
-    public void stopToSee(Date dateI, Date dateF) {
-        if(dateF.getTime() > dateI.getTime()) {
-            this.setTimeViewed((int)(dateF.getTime() - dateI.getTime()));
-        } else {
-            this.setTimeViewed(0);
-        }
-    }
-
     public static ArrayList<Movie> makeMoviesList() {
         ArrayList<Movie> movies = new ArrayList<>();
 
@@ -60,6 +41,41 @@ public class Movie extends Film implements IVisualizable{
         return movies;
     }
 
+    /**
+	 * {@inheritDoc}
+	 * */
+    @Override
+    public String toString() {
+        return "Title: " + super.getTitle() +
+        "\nGenre: " + super.getGenre() +
+        "\nYear: " + super.getYear() +
+        "\nCreator: " + super.getCreator() +
+        "\nDuration: " + super.getDuration();
+    }
+
+    /**
+	 * {@inheritDoc}
+	 * */
+    @Override
+    public Date startToSee(Date dateI) {
+        return dateI;
+    }
+
+    /**
+	 * {@inheritDoc}
+	 * */
+    @Override
+    public void stopToSee(Date dateI, Date dateF) {
+        if(dateF.getTime() > dateI.getTime()) {
+            this.setTimeViewed((int)(dateF.getTime() - dateI.getTime()));
+        } else {
+            this.setTimeViewed(0);
+        }
+    }
+
+    /**
+	 * {@inheritDoc}
+	 * */
 	@Override
 	public void view() {
 		// TODO Auto-generated method stub

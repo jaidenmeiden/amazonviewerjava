@@ -48,6 +48,9 @@ public abstract class Publication {
         this.creators = creators;
     }
 
+    /**
+	 * {@inheritDoc}
+	 * */
     @Override
     public String toString() {
         return "Title='" + title + '\'' +
