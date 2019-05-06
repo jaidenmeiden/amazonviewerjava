@@ -3,15 +3,20 @@ package com.jaidenmeiden.amazonviewer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.jaidenmeiden.amazonviewer.Util.AmazonUtil;
+
 public class Book extends Publication implements IVisualizable {
 
     private int id;
     private String isbn;
     private boolean readed;
     private int timeReaded;
+    private ArrayList<Page> pages;
 
-    public Book(String title, Date editionDate, String editorial) {
+    public Book(String title, Date editionDate, String editorial, String[] authors, ArrayList<Page> pages) {
         super(title, editionDate, editorial);
+        setAuthors(authors);
+        this.pages = pages;
     }
 
     public int getId() {
@@ -33,12 +38,12 @@ public class Book extends Publication implements IVisualizable {
             return "No";
         }
     }
-   
-    public boolean getIsReaded() {
-		return readed;
-	}
 
-	public void setReaded(boolean readed) {
+    public boolean getIsReaded() {
+        return readed;
+    }
+
+    public void setReaded(boolean readed) {
         this.readed = readed;
     }
 
@@ -50,17 +55,25 @@ public class Book extends Publication implements IVisualizable {
         this.timeReaded = timeReaded;
     }
 
+    public ArrayList<Page> getPages() {
+        return pages;
+    }
+
+    public void setPages(ArrayList<Page> pages) {
+        this.pages = pages;
+    }
+
     /**
-	 * {@inheritDoc}
-	 * */
+     * {@inheritDoc}
+     * */
     @Override
     public Date startToSee(Date dateI) {
         return dateI;
     }
 
     /**
-	 * {@inheritDoc}
-	 * */
+     * {@inheritDoc}
+     * */
     @Override
     public void stopToSee(Date dateI, Date dateF) {
         if(dateF.getTime() > dateI.getTime()) {
@@ -69,34 +82,69 @@ public class Book extends Publication implements IVisualizable {
             this.setTimeReaded(0);
         }
     }
-    
+
     public static ArrayList<Book> makeBooksList() {
         ArrayList<Book> books = new ArrayList<>();
+        String[] authors = new String[3];
+
+        for(int i = 0; i < 3; i++) {
+            authors[i] = "Author " + i;
+        }
+
+        ArrayList<Page> pages = new ArrayList();
+        int pagina = 0;
+        for(int i = 0; i < 3; i++) {
+            pagina = i + 1;
+            pages.add(new Book.Page(pagina, "El contenido de la página " + pagina));
+        }
+
 
         for(int i = 1; i <= 10; i++) {
-            books.add(new Book("Book " + i, new Date(), "Editorial " + i));
+            books.add(new Book("Book " + i, new Date(), "Editorial " + i, authors, pages));
         }
 
         return books;
     }
 
-	public void read() {
-		// TODO Auto-generated method stub
-		setReaded(true);
-        Date dateI = startToSee(new Date());	
-        
-        for(int i = 1; i < 10000; i++) {
+    public void read() {
+        // TODO Auto-generated method stub
+        setReaded(true);
+        Date dateI = startToSee(new Date());
+
+        int i = 0;
+        do {
             System.out.println(".......");
-        }
+            System.out.println("Page" + getPages().get(i).getNumber());
+            System.out.println(getPages().get(i).getContent());
+            System.out.println(".......");
+
+            if(i != 0) {
+                System.out.println("1. Regresar página");
+            }
+            System.out.println("2. Siguiente página");
+            System.out.println("0. Cerrar libro");
+            System.out.println();
+
+            int response = AmazonUtil.validateUserResponseMenu(0,2);
+
+            if(response == 2) {
+                i++;
+            } else if(response == 1) {
+                i--;
+            } else if(response == 0) {
+                break;
+            }
+
+        } while(i < getPages().size());
 
         //Termine de verla
         stopToSee(dateI, new Date());
         System.out.println();
         System.out.println("Leiste: " + super.toString());
         System.out.println("Por: " + getTimeReaded() + " milliseconds");
-	}
+    }
 
-	public static class Page {
+    public static class Page {
         private int id;
         private int number;
         private String content;
