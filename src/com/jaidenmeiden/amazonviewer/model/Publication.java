@@ -8,7 +8,7 @@ public abstract class Publication {
     private String title;
     private Date editionDate;
     private String editorial;
-    private String[] creators;
+    private String[] authors;
 
     public Publication(String title, Date editionDate, String editorial) {
         this.title = title;
@@ -40,12 +40,12 @@ public abstract class Publication {
         this.editorial = editorial;
     }
 
-    public String[] getCreators() {
-        return creators;
+    public String[] getAuthors() {
+        return authors;
     }
 
-    public void setCreators(String[] creators) {
-        this.creators = creators;
+    public void setAuthors(String[] authors) {
+        this.authors = authors;
     }
 
     /**
@@ -53,9 +53,9 @@ public abstract class Publication {
 	 * */
     @Override
     public String toString() {
-        return "Title='" + title + '\'' +
-                "\nEditionDate=" + editionDate +
-                "\nEditorial='" + editorial + '\'' +
-                "\nCreators=" + Arrays.toString(creators);
+        return "Title: '" + title + '\'' +
+                "\nEditionDate: " + editionDate +
+                "\nEditorial: '" + editorial + '\'' +
+                "\nAuthors: " + Arrays.toString(authors);
     }
 }

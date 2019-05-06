@@ -3,8 +3,6 @@ package com.jaidenmeiden.amazonviewer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
-
 /**
  * Hereda de {@link Film}
  * Implementa de {@link IVisualizable}
