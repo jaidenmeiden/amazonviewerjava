@@ -15,6 +15,12 @@ public class Main {
 	private static ArrayList<Book> books;
 
     public static void main(String[] args) {
+    	//Ejemplo de instanciar una clase abstracta, ya que no se peude instanciar por si misma
+    	/*
+    	Film film = new Movie("Movie ", "Genre example", "Creator example", 120, (short)(2019));
+    	film.view();
+    	*/
+    	
         showMenu();
     }
 
@@ -89,18 +95,7 @@ public class Main {
             
             if(response > 0) {
 	            Movie movieSelected = movies.get(response - 1);
-	            movieSelected.setViewed(true);
-	            Date dateI = movieSelected.startToSee(new Date());	
-	            
-	            for(int i = 1; i < 10000; i++) {
-	                System.out.println(".......");
-	            }
-	            
-	            //Termine de verla
-	            movieSelected.stopToSee(dateI, new Date());
-	            System.out.println();
-	            System.out.println("Viste: " + movieSelected);
-	            System.out.println("Viste: " + movieSelected.getTimeViewed() + " milliseconds");
+	            movieSelected.view();
             } else {
             	exit = 0;
             }
@@ -129,10 +124,7 @@ public class Main {
             int response = Integer.valueOf(sc.nextLine());
             	
             if(response > 0) {
-            	Serie serieSelected = series.get(response - 1);
-            	serieSelected.setViewed(true);	
-	            
-	            showChapters(series.get(response - 1).getCharpters());
+            	showChapters(series.get(response - 1).getChapters());
             } else {
             	exit = 0;
             }
@@ -160,18 +152,7 @@ public class Main {
             
             if(response > 0) {
             	Chapter chapterSelected = chapters.get(response - 1);
-            	chapterSelected.setViewed(true);
-	            Date dateI = chapterSelected.startToSee(new Date());	
-	            
-	            for(int i = 1; i < 10000; i++) {
-	                System.out.println(".......");
-	            }
-	            
-	            //Termine de verla
-	            chapterSelected.stopToSee(dateI, new Date());
-	            System.out.println();
-	            System.out.println("Visto: " + chapterSelected);
-	            System.out.println("Por: " + chapterSelected.getTimeViewed() + " milliseconds");
+            	chapterSelected.view();
             } else {
             	exit = 0;
             }
@@ -200,18 +181,7 @@ public class Main {
             
             if(response > 0) {
             	Book bookSelected = books.get(response - 1);
-	            bookSelected.setReaded(true);
-	            Date dateI = bookSelected.startToSee(new Date());	
-	            
-	            for(int i = 1; i < 10000; i++) {
-	                System.out.println(".......");
-	            }
-	            
-	            //Termine de verla
-	            bookSelected.stopToSee(dateI, new Date());
-	            System.out.println();
-	            System.out.println("Leiste: " + bookSelected);
-	            System.out.println("Por: " + bookSelected.getTimeReaded() + " milliseconds");
+            	bookSelected.read();
             } else {
             	exit = 0;
             }
@@ -270,7 +240,7 @@ public class Main {
 					contentReport += ":: SERIE :: \n";
 					contentReport += serie.toString() + "\n";
 					contentReport += "\n";
-					for (Chapter chapter : serie.getCharpters()) {
+					for (Chapter chapter : serie.getChapters()) {
 						if (chapter.getIsViewed()) {
 							contentReport += ":: CHAPTER :: \n";
 							contentReport += chapter.toString() + "\n";

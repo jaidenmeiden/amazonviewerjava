@@ -6,12 +6,11 @@ public class Serie extends Film {
 
     private int id;
     private int seasonQuantity;
-    private ArrayList<Chapter> charpters;
+    private ArrayList<Chapter> chapters;
 
-    public Serie(String title, String genre, String creator, int duration, int seasonQuantity, ArrayList<Chapter> charpters) {
+    public Serie(String title, String genre, String creator, int duration, int seasonQuantity) {
         super(title, genre, creator, duration);
         this.seasonQuantity = seasonQuantity;
-        this.charpters = charpters;
     }
 
     public int getId() {
@@ -26,19 +25,23 @@ public class Serie extends Film {
         this.seasonQuantity = seasonQuantity;
     }
 
-    public ArrayList<Chapter> getCharpters() {
-        return charpters;
+    public ArrayList<Chapter> getChapters() {
+        return chapters;
     }
 
-    public void setCharpters(ArrayList<Chapter> charpters) {
-        this.charpters = charpters;
+    public void setChapters(ArrayList<Chapter> chapters) {
+        this.chapters = chapters;
     }
+    
+    
     
     public static ArrayList<Serie> makeSeriesList() {
         ArrayList<Serie> series = new ArrayList<>();
 
         for(int i = 1; i <= 7; i++) {
-            series.add(new Serie("Serie " + i, "Genre " + i, "Creator " + i, 120 + i, (short)(1990 + 1), Chapter.makeChaptersList()));
+        	Serie serie = new Serie("Serie " + i, "Genre " + i, "Creator " + i, 120 + i, (short)(1990 + 1));
+            serie.setChapters(Chapter.makeChaptersList(serie));
+			series.add(serie);
         }
 
         return series;
@@ -52,4 +55,9 @@ public class Serie extends Film {
         "\nCreator: " + super.getCreator() +
         "\nDuration: " + super.getDuration();
     }
+
+	@Override
+	public void view() {
+		setViewed(true);
+	}
 }

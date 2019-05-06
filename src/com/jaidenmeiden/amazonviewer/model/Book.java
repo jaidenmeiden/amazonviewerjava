@@ -73,4 +73,20 @@ public class Book extends Publication implements IVisualizable {
 
         return books;
     }
+
+	public void read() {
+		// TODO Auto-generated method stub
+		setReaded(true);
+        Date dateI = startToSee(new Date());	
+        
+        for(int i = 1; i < 10000; i++) {
+            System.out.println(".......");
+        }
+        
+        //Termine de verla
+        stopToSee(dateI, new Date());
+        System.out.println();
+        System.out.println("Leiste: " + super.toString());
+        System.out.println("Por: " + getTimeReaded() + " milliseconds");
+	}
 }

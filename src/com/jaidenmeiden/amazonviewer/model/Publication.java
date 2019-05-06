@@ -3,7 +3,7 @@ package com.jaidenmeiden.amazonviewer.model;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Publication {
+public abstract class Publication {
 
     private String title;
     private Date editionDate;
